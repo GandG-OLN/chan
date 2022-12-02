@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!-- Account Budget Financial Reporting Assets -->
+        <template id="account_budget_reporting_backend" inherit_id="web.assets_backend" active="True">
+            <xpath expr="." position="inside">
+                <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"/>
+                <link rel="stylesheet" type="text/scss" href="/gg_account_budget/static/src/scss/style.scss"/>
+                <link rel="stylesheet" type="text/scss"
+                      href="/gg_account_budget/static/lib/bootstrap-toggle-master/css/bootstrap-toggle.min.css"/>
+                <script type="text/javascript" src="/gg_account_budget/static/src/js/account_budget_reporting.js"/>
+<!--                <script type="text/javascript" src="/gg_account_budget/static/src/js/payment_model.js"/>-->
+<!--                <script type="text/javascript" src="/gg_account_budget/static/src/js/payment_render.js"/>-->
+<!--                <script type="text/javascript" src="/gg_account_budget/static/src/js/payment_matching.js"/>-->
+                <script type="text/javascript" src="/gg_account_budget/static/lib/Chart.bundle.js"/>
+                <script type="text/javascript" src="/gg_account_budget/static/lib/Chart.bundle.min.js"/>
+                <script type="text/javascript" src="/gg_account_budget/static/lib/Chart.min.js"/>
+                <script type="text/javascript" src="/gg_account_budget/static/lib/Chart.js"/>
+                <!-- fusion chart -->
+                <script type="text/javascript" src="/gg_account_budget/static/lib/fusioncharts.charts.js"/>
+                <script type="text/javascript" src="/gg_account_budget/static/lib/fusioncharts.jqueryplugin.min.js"/>
+                <script type="text/javascript" src="/gg_account_budget/static/lib/fusioncharts.theme.fusion.js"/>
+                <script type="text/javascript" src="/gg_account_budget/static/lib/fusioncharts.js"/>
+                <script type="text/javascript"
+                        src="/gg_account_budget/static/lib/bootstrap-toggle-master/js/bootstrap-toggle.min.js"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

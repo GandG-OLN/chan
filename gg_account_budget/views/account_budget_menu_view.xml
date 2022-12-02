@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem
+                id="menu_gg_account_budget_global"
+                name="Budget"
+                web_icon="social,static/description/icon.png"
+                sequence="9"
+                groups="gg_account_budget.group_gg_account_budget_user"/>
+
+        <menuitem
+                id="menu_gg_crossovered_budget_global"
+                parent="menu_gg_account_budget_global"
+                name="Budget"
+                action="act_gg_crossovered_budget_view"
+                sequence="10"
+                groups="gg_account_budget.group_gg_account_budget_user"/>
+
+        <menuitem
+                id="menu_gg_account_budget_report"
+                parent="menu_gg_account_budget_global"
+                name="Analyse"
+                action="action_account_budget_reporting"
+                sequence="20"
+                groups="gg_account_budget.group_gg_account_budget_manager"/>
+
+        <menuitem
+                id="menu_gg_account_budget_configuration"
+                parent="menu_gg_account_budget_global"
+                name="Configuration"
+                sequence="30"
+                groups="gg_account_budget.group_gg_account_budget_manager"/>
+
+        <menuitem
+                id="budget_config_settings_menu"
+                name="Configuration"
+                parent="menu_gg_account_budget_configuration"
+                groups="gg_account_budget.group_gg_account_budget_manager"
+                sequence="0"/>
+
+        <menuitem
+                id="menu_gg_account_budget_post_configuration"
+                parent="menu_gg_account_budget_configuration"
+                name="Poste budgétaire"
+                groups="gg_account_budget.group_gg_account_budget_manager"
+                action="open_budget_post_form"
+                sequence="30"/>
+    </data>
+</odoo>

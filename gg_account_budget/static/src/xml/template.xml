@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <t t-name="Budgetdashboard">
+        <div class="accounts-dashboard-wrap">
+            <div class="o_dashboards col-xs-12 col-sm-12 col-lg-12 col-md-12"
+                 style="background-color: #e1e1e1;overflow: scroll; !important; ">
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-12">
+                                <div class="dash-header">
+                                    <h1 class="custom-h1 dashboard-h1">Dashboard</h1>
+                                    <input type="date" class="custom-h3" id="filter_date" value=""/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin:0px">
+                <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                    <div class="">
+                        <div class="row account-details" style="margin:0px">
+                            <div class="col-md-4">
+                                <!--         BUDGET PLANIFIED          -->
+                                <div class="tile wide invoice box-1">
+                                    <div class="headers">
+                                        <div class="main-title">Budget Planifié</div>
+                                        <div id="periodly_total_planned">
+                                            <div class="left">
+                                                <div class="count">
+                                                    <span id="total_planned_year"/>
+                                                </div>
+                                            </div>
+                                            <div class="right">
+                                                <div class="count">
+                                                    <span id="total_planned_month"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--      Budget Realisé       -->
+                            <div class="col-md-4">
+                                <div class="tile wide invoice box-2">
+                                    <div class="header">
+                                        <div class="main-title">Budget Realisé</div>
+                                        <div id="periodly_total_practical">
+                                            <div class="left">
+                                                <div class="count">
+                                                    <span id="total_practical_year"/>
+                                                </div>
+                                            </div>
+                                            <div class="right">
+                                                <div class="count">
+                                                    <span id="total_practical_month"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--              Budget Engagé              -->
+                            <div class="col-md-4">
+                                <div class="tile wide invoice box-3">
+                                    <div class="header">
+                                        <div class="main-title">Budget Engagé</div>
+                                        <div id="periodly_total_committed">
+                                            <div class="left">
+                                                <div class="count">
+                                                    <span id="total_committed_year"/>
+                                                </div>
+                                            </div>
+                                            <div class="right">
+                                                <div class="count">
+                                                    <span id="total_committed_month"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--            Budget Théorique             -->
+                            <!--<div class="col-md-3">
+                                <div class="tile wide invoice box-4">
+                                    <div class="header">
+                                        <div class="main-title">Budget Théorique réalisé</div>
+                                        <div id="periodly_total_theorical">
+                                            <div class="left">
+                                                <div class="count">
+                                                    <span id="total_theorical_year"/>
+                                                </div>
+                                            </div>
+                                            <div class="right">
+                                                <div class="count">
+                                                    <span id="total_theorical_month"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin:0px">
+                <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                    <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <b>
+                                        <h2 class="custom-h2">EVOLUTION DU BUDGET SUR 5 ANS</h2>
+                                    </b>
+                                </div>
+                                <div class="card-tools">
+
+                                </div>
+                            </div>
+                            <div class="card-body mt-3" id="in_ex_body_hide">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p id="myelement1"> </p>
+                                        <div class="chart">
+                                            <canvas id="canvas" width="100%" height="100%"> </canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin:0px">
+                <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                    <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                         <div class="card" style="height:366px;">
+                             <div class="card-header"
+                                  style=" padding: 17px 1.5rem !important; display: flex !IMPORTANT; justify-content: space-between; align-items: center; ">
+                                 <h2 class="custom-h2 card-title text-center">
+                                     <b>POSTE BUDGETAIRE REPORTING</b>
+                                 </h2>
+                             </div>
+
+                             <div class="card-body p-0" style=" height: 287px; overflow-y: auto; " id="top_10_body">
+                                 <table class="table">
+                                     <thead>
+                                        <tr>
+                                          <th scope="col" class="text-left" id="total_planned_year">POSTE BUDGETAIRE</th>
+                                            <th scope="col" class="text-right" id="total_planned_year">MONTANT PLANIFIE</th>
+                                            <th scope="col" class="text-right" id="total_planned_year">MONTANT REALISE</th>
+                                            <th scope="col" class="text-right" id="total_planned_year">MONTANT ENGAGE</th>
+                                            <th scope="col" class="text-right" id="total_planned_year">MONTANT PLANIFIE - REALISE</th>
+                                        </tr>
+                                      </thead>
+                                     <tbody id="budget_post_reporting" class="clearfix">
+                                      </tbody>
+                                    </table>
+                             </div>
+                         </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

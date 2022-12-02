@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="view_move_form_inherit_update">
+        <field name="name">account.move.form.inherit.update</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="after">
+                <div class="alert alert-info text-center" role="alert" style="margin-bottom:0px;"
+                     attrs="{'invisible': ['|', ('has_exceeded_budget', '=', False), ('approval_request_count','>',0)]}">
+                    Il y a dépassement budgétaire du budget realisé, si vous voulez continuer, appuyez sur le lien
+                    <button
+                            name="button_request_for_approval_budget" type="object" states="draft"
+                            string="Faire une demande d'approbation de dépassement de budget"
+                            class="oe_link text-danger"
+                            context="{'approval_action': 'send'}"/>, la facture sera soumise à une approbation.
+                </div>
+            </xpath>
+            <xpath expr="//div[@class='oe_button_box']" position="inside">
+                <button type="object" name="action_view_approval"
+                        class="oe_stat_button"
+                        icon="fa-pencil-square-o"
+                        attrs="{'invisible':['&amp;', ('move_type', 'not in', ('out_invoice', 'out_refund')), ('approval_request_count', '=', 0)]}">
+                    <field name="approval_request_count" widget="statinfo" string="Approbations"/>
+                    <field name="approval_request_ids" invisible="1"/>
+                </button>
+            </xpath>
+            <xpath expr="//group[@id='header_left_group']" position="inside">
+                <field name="budget_id"
+                       attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt'))], 'required':[('move_type', 'in', ('in_invoice', 'in_refund', 'in_receipt'))], 'readonly':[('approval_request_count', '>', 0)]}"/>
+            </xpath>
+            <xpath expr="//field[@name='move_type']" position='after'>
+                <field name="has_exceeded_budget" string="Has exceeded budget"
+                       attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund'))]}"/>
+                <field name="approval_request_state" string="Approved status" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='invoice_date']" position='attributes'>
+                <attribute name="attrs">{'readonly':[('move_type', 'not in', ('out_invoice', 'out_refund',
+                    'in_invoice', 'in_refund', 'out_receipt', 'in_receipt'))]}
+                </attribute>
+            </xpath>
+            <xpath expr="//field[@name='date']" position='attributes'>
+                <attribute name="attrs">{'readonly':['|', ('approval_request_count', '>', 0), ('state', '!=',
+                    'draft')]}
+                </attribute>
+            </xpath>
+            <xpath expr="//field[@name='invoice_line_ids']" position='attributes'>
+                <attribute name="attrs">{'readonly':[('approval_request_count', '>', 0)]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='line_ids']" position='after'>
+                <attribute name="attrs">{'readonly':[('approval_request_count', '>', 0),('move_type', '!=', 'entry')]}
+                </attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
