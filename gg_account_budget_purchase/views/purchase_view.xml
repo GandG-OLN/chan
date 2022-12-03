@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="purchase_order_view_form_update" model="ir.ui.view">
+            <field name="name">purchase.order.form.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='oe_button_box']" position="inside">
+                    <button type="object" name="action_view_approval"
+                            class="oe_stat_button"
+                            icon="fa-pencil-square-o" attrs="{'invisible':[('approval_request_count', '=', 0)]}">
+                        <field name="approval_request_count" widget="statinfo" string="Approbation"/>
+                        <field name="approval_request_ids" invisible="1"/>
+                    </button>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="before">
+                    <field name="budget_id" attrs="{'readonly':['&amp;', ('has_exceeded_budget', '=', True), ('approval_request_count','>',0)]}"/>
+                    <field name="has_exceeded_budget" invisible="1"/>
+                </xpath>
+                <xpath expr="//header//button[@id='draft_confirm']" position="attributes">
+                    <attribute name="attrs">{'invisible':['|', ('has_exceeded_budget','=',True)]}</attribute>
+                </xpath>
+                <xpath expr="//header//button[@id='bid_confirm']" position="attributes">
+                    <attribute name="attrs">{'invisible':['|', ('has_exceeded_budget','=',True)]}</attribute>
+                </xpath>
+                <!--<xpath expr="//field[@name='order_line']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('has_exceeded_budget','=',True)]}</attribute>
+                </xpath>-->
+                <xpath expr="//field[@name='date_order']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('has_exceeded_budget','=',True)]}</attribute>
+                </xpath>
+                <xpath expr="//sheet" position="before">
+                    <div class="alert alert-info text-center" role="alert" style="margin-bottom:0px;"
+                         attrs="{'invisible': ['|', ('has_exceeded_budget', '=', False), ('approval_request_count','>',0)]}">
+                        <span class="o_form_label" attrs="{'invisible': [('has_exceeded_budget', '=', False)]}">
+                        Il y a dépassement budgétaire engagé, si vous voulez continuer, appuyez sur le lien<button
+                            name="button_request_for_approval_budget" type="object" states="draft"
+                            string="Faire une demande d'approbation d'un dépassement de budget"
+                            class="oe_link text-danger"
+                            context="{'approval_action': 'send'}"/>, la demande d'achat sera soumise à une approbation.
+                        </span>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

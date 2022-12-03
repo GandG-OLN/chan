@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="gg_crossovered_budget_view_form_update" model="ir.ui.view">
+            <field name="name">gg.crossovered.budget.form.inherit</field>
+            <field name="model">gg.crossovered.budget</field>
+            <field name="inherit_id" ref="gg_account_budget.gg_crossovered_budget_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='planned_amount']" position="after">
+                    <field name="committed_amount" sum="Montant engagé"/>
+                </xpath>
+                <xpath expr="//field[@name='practical_percentage']" position="after">
+                    <field name="committed_percentage" widget="percentage"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
